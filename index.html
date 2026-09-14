@@ -9,13 +9,11 @@
   :root { --black: #0b0b0f; --pink: #ff2e88; --card: #16161e; --text: #b9b9c7; }
   body { background: var(--black); color: var(--text); line-height: 1.6; padding-bottom: 74px; }
 
-  /* FIXED BOTTOM NAV */
   nav { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 100; background: rgba(11,11,15,.96); border-top: 1px solid rgba(255,46,136,.3);
         display: flex; justify-content: center; gap: 8px; padding: 10px 4%; backdrop-filter: blur(8px); }
   nav a { color: #fff; text-decoration: none; font-size: .78rem; text-transform: uppercase; letter-spacing: 2px; padding: 12px 18px; border-radius: 6px; transition: .3s; }
   nav a:hover { color: var(--pink); background: rgba(255,46,136,.1); }
 
-  /* GALLERY-FIRST HERO */
   .hero { padding: 70px 6% 50px; }
   .hero h1 { font-size: clamp(2.6rem, 7vw, 5.5rem); color: #fff; font-weight: 900; text-transform: uppercase; line-height: .95; }
   .hero h1 span { color: var(--pink); display: block; }
@@ -25,7 +23,6 @@
          letter-spacing: 2px; text-decoration: none; border: none; border-radius: 4px; cursor: pointer; font-size: .9rem; transition: .3s; }
   .btn:hover { background: #fff; color: var(--black); }
 
-  /* MASONRY GALLERY (CSS columns) */
   .masonry { columns: 3 260px; column-gap: 16px; padding: 20px 6%; }
   .masonry img { width: 100%; border-radius: 8px; margin-bottom: 16px; transition: .35s; display: block; }
   .masonry img:hover { transform: scale(1.02); box-shadow: 0 12px 34px rgba(255,46,136,.25); }
@@ -35,7 +32,6 @@
   .section-title h2 { color: #fff; font-size: 2rem; text-transform: uppercase; letter-spacing: 3px; }
   .section-title h2 span { color: var(--pink); }
 
-  /* STICKY-LEFT list of styles */
   .style-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 26px 0; border-bottom: 1px solid rgba(255,46,136,.15); transition: .3s; }
   .style-row:hover { padding-left: 14px; }
   .style-row h3 { color: #fff; font-size: 1.3rem; }
@@ -68,9 +64,9 @@
 
 <div class="masonry">
   <img src="https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=700" alt="Tattoo artwork">
-  <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=700" alt="Tattoo session" style="aspect-ratio:3/4;object-fit:cover;">
-  <img src="https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=700" alt="Arm tattoo" style="aspect-ratio:1/1;object-fit:cover;">
-  <img src="https://images.unsplash.com/photo-1590246814883-57c511e76523?w=700" alt="Tattoo machine" style="aspect-ratio:4/5;object-fit:cover;">
+  <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=700" alt="Tattoo artist at work" style="aspect-ratio:3/4;object-fit:cover;">
+  <img src="https://images.unsplash.com/photo-1542727365-19732a80dcfd?w=700" alt="Tattooed arm detail" style="aspect-ratio:1/1;object-fit:cover;">
+  <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=700&sat=-100" alt="Tattoo session in black and white" style="aspect-ratio:4/5;object-fit:cover;">
 </div>
 
 <section id="styles">
