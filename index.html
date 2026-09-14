@@ -7,92 +7,89 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
   :root { --black: #0b0b0f; --pink: #ff2e88; --card: #16161e; --text: #b9b9c7; }
-  body { background: var(--black); color: var(--text); line-height: 1.6; }
-  nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 6%; background: rgba(11,11,15,.95); border-bottom: 1px solid rgba(255,46,136,.2); position: sticky; top: 0; z-index: 10; }
-  .logo { font-size: 1.4rem; font-weight: 900; color: #fff; letter-spacing: 2px; text-transform: uppercase; }
-  .logo span { color: var(--pink); }
-  nav ul { display: flex; gap: 28px; list-style: none; }
-  nav a { color: #fff; text-decoration: none; font-size: .9rem; text-transform: uppercase; letter-spacing: 1px; transition: .3s; }
-  nav a:hover { color: var(--pink); }
-  .hero { text-align: center; padding: 120px 8% 100px; background: radial-gradient(ellipse at center, rgba(255,46,136,.12), transparent 60%), var(--black); }
-  .hero h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); color: #fff; font-weight: 900; text-transform: uppercase; line-height: 1.1; }
-  .hero h1 span { color: var(--pink); }
-  .hero p { max-width: 560px; margin: 22px auto 36px; font-size: 1.1rem; }
+  body { background: var(--black); color: var(--text); line-height: 1.6; padding-bottom: 74px; }
+
+  /* FIXED BOTTOM NAV */
+  nav { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 100; background: rgba(11,11,15,.96); border-top: 1px solid rgba(255,46,136,.3);
+        display: flex; justify-content: center; gap: 8px; padding: 10px 4%; backdrop-filter: blur(8px); }
+  nav a { color: #fff; text-decoration: none; font-size: .78rem; text-transform: uppercase; letter-spacing: 2px; padding: 12px 18px; border-radius: 6px; transition: .3s; }
+  nav a:hover { color: var(--pink); background: rgba(255,46,136,.1); }
+
+  /* GALLERY-FIRST HERO */
+  .hero { padding: 70px 6% 50px; }
+  .hero h1 { font-size: clamp(2.6rem, 7vw, 5.5rem); color: #fff; font-weight: 900; text-transform: uppercase; line-height: .95; }
+  .hero h1 span { color: var(--pink); display: block; }
+  .hero-row { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 30px; margin-top: 20px; }
+  .hero-row p { max-width: 480px; font-size: 1.1rem; }
   .btn { display: inline-block; padding: 15px 42px; background: var(--pink); color: #fff; font-weight: 700; text-transform: uppercase;
          letter-spacing: 2px; text-decoration: none; border: none; border-radius: 4px; cursor: pointer; font-size: .9rem; transition: .3s; }
   .btn:hover { background: #fff; color: var(--black); }
-  section { padding: 85px 6%; }
-  .section-title { text-align: center; margin-bottom: 50px; }
-  .section-title h2 { color: #fff; font-size: 2.1rem; text-transform: uppercase; letter-spacing: 3px; }
-  .section-title p { color: var(--pink); text-transform: uppercase; letter-spacing: 3px; font-size: .8rem; margin-top: 6px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: 1100px; margin: auto; }
-  .card { background: var(--card); border: 1px solid rgba(255,46,136,.15); border-radius: 10px; padding: 32px; transition: .3s; }
-  .card:hover { border-color: var(--pink); transform: translateY(-6px); }
-  .card h3 { color: #fff; margin: 12px 0 8px; }
-  .card .icon { font-size: 2rem; }
-  .card .price { color: var(--pink); font-weight: 700; margin-top: 10px; }
-  .gallery-grid img { width: 100%; height: 260px; object-fit: cover; border-radius: 8px; filter: contrast(1.05); transition: .35s; }
-  .gallery-grid img:hover { transform: scale(1.03); box-shadow: 0 12px 34px rgba(255,46,136,.25); }
-  .contact-wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 50px; max-width: 1000px; margin: auto; }
-  .info-list div { margin-bottom: 22px; }
-  .info-list h4 { color: var(--pink); text-transform: uppercase; letter-spacing: 2px; font-size: .8rem; margin-bottom: 4px; }
+
+  /* MASONRY GALLERY (CSS columns) */
+  .masonry { columns: 3 260px; column-gap: 16px; padding: 20px 6%; }
+  .masonry img { width: 100%; border-radius: 8px; margin-bottom: 16px; transition: .35s; display: block; }
+  .masonry img:hover { transform: scale(1.02); box-shadow: 0 12px 34px rgba(255,46,136,.25); }
+
+  section { padding: 70px 6%; }
+  .section-title { margin-bottom: 44px; }
+  .section-title h2 { color: #fff; font-size: 2rem; text-transform: uppercase; letter-spacing: 3px; }
+  .section-title h2 span { color: var(--pink); }
+
+  /* STICKY-LEFT list of styles */
+  .style-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 26px 0; border-bottom: 1px solid rgba(255,46,136,.15); transition: .3s; }
+  .style-row:hover { padding-left: 14px; }
+  .style-row h3 { color: #fff; font-size: 1.3rem; }
+  .style-row p { font-size: .92rem; max-width: 460px; margin-top: 4px; }
+  .style-row .price { color: var(--pink); font-weight: 800; font-size: 1.2rem; white-space: nowrap; }
+
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; }
+  .info-list div { margin-bottom: 20px; }
+  .info-list h4 { color: var(--pink); text-transform: uppercase; letter-spacing: 2px; font-size: .78rem; margin-bottom: 4px; }
   .info-list p { color: #fff; }
-  form label { display: block; color: #fff; font-size: .8rem; text-transform: uppercase; letter-spacing: 2px; margin: 14px 0 6px; }
-  form input, form textarea { width: 100%; padding: 13px; background: var(--card); border: 1px solid rgba(255,46,136,.25); border-radius: 6px; color: #fff; font-size: 1rem; }
+  form label { display: block; color: #fff; font-size: .78rem; text-transform: uppercase; letter-spacing: 2px; margin: 13px 0 5px; }
+  form input, form textarea { width: 100%; padding: 12px; background: var(--card); border: 1px solid rgba(255,46,136,.25); border-radius: 6px; color: #fff; font-size: 1rem; }
   form input:focus, form textarea:focus { outline: none; border-color: var(--pink); }
-  form textarea { min-height: 120px; resize: vertical; }
-  form .btn { margin-top: 18px; }
-  .form-msg { margin-top: 14px; color: var(--pink); display: none; }
-  footer { padding: 26px; text-align: center; font-size: .85rem; color: #55556a; border-top: 1px solid rgba(255,46,136,.15); }
-  @media (max-width: 768px) { nav ul { display: none; } }
+  form textarea { min-height: 110px; resize: vertical; }
+  form .btn { margin-top: 16px; }
+  .form-msg { margin-top: 12px; color: var(--pink); display: none; }
+  footer { padding: 24px 6%; font-size: .82rem; color: #55556a; }
+  @media (max-width: 820px) { .contact-wrap { grid-template-columns: 1fr; } nav a { padding: 12px 10px; font-size: .7rem; } }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="logo">INK <span>TIDE</span> TATTOO</div>
-  <ul>
-    <li><a href="#styles">Styles</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#book">Book</a></li>
-  </ul>
-</nav>
-
 <header class="hero">
-  <h1>Your Story,<br><span>In Ink</span></h1>
-  <p>Custom tattoos by award-winning artists. Walk-ins for flash, consultations for large custom pieces. Sterile, vegan inks, single-use everything.</p>
-  <a href="#book" class="btn">Book a Session</a>
+  <h1>INK TIDE<span>TATTOO · VARNA</span></h1>
+  <div class="hero-row">
+    <p>Custom tattoos by award-winning artists. Walk-ins for flash, consultations for large custom pieces. Sterile studio, vegan inks, single-use everything. 18+ only.</p>
+    <a href="#book" class="btn">Book a Session</a>
+  </div>
 </header>
 
-<section id="styles">
-  <div class="section-title"><h2>Our Styles</h2><p>Flash or fully custom</p></div>
-  <div class="grid">
-    <div class="card"><div class="icon">⚫</div><h3>Blackwork & Dotwork</h3><p>Bold geometric pieces, mandalas, and heavy black fills.</p><p class="price">from 120 лв.</p></div>
-    <div class="card"><div class="icon">🖋️</div><h3>Fine Line</h3><p>Delicate single-needle work — minimalist and elegant.</p><p class="price">from 90 лв.</p></div>
-    <div class="card"><div class="icon">🎨</div><h3>Neo-Traditional</h3><p>Rich color, bold outlines, classic motifs reimagined.</p><p class="price">from 150 лв.</p></div>
-    <div class="card"><div class="icon">🌊</div><h3>Realism</h3><p>Portraits and photo-realistic pieces by our senior artists.</p><p class="price">from 200 лв.</p></div>
-  </div>
-</section>
+<div class="masonry">
+  <img src="https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=700" alt="Tattoo artwork">
+  <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=700" alt="Tattoo session" style="aspect-ratio:3/4;object-fit:cover;">
+  <img src="https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=700" alt="Arm tattoo" style="aspect-ratio:1/1;object-fit:cover;">
+  <img src="https://images.unsplash.com/photo-1590246814883-57c511e76523?w=700" alt="Tattoo machine" style="aspect-ratio:4/5;object-fit:cover;">
+</div>
 
-<section id="work">
-  <div class="section-title"><h2>Recent Work</h2><p>Fresh from the chairs</p></div>
-  <div class="grid gallery-grid">
-    <img src="https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=800" alt="Tattoo artwork">
-    <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=800" alt="Tattoo session">
-    <img src="https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=800" alt="Arm tattoo">
-    <img src="https://images.unsplash.com/photo-1590246814883-57c511e76523?w=800" alt="Tattoo machine close-up">
-  </div>
+<section id="styles">
+  <div class="section-title"><h2>Styles & <span>Rates</span></h2></div>
+  <div class="style-row"><div><h3>Blackwork & Dotwork</h3><p>Bold geometric pieces, mandalas, heavy black fills.</p></div><span class="price">from 120 лв.</span></div>
+  <div class="style-row"><div><h3>Fine Line</h3><p>Delicate single-needle work — minimalist and elegant.</p></div><span class="price">from 90 лв.</span></div>
+  <div class="style-row"><div><h3>Neo-Traditional</h3><p>Rich color, bold outlines, classic motifs reimagined.</p></div><span class="price">from 150 лв.</span></div>
+  <div class="style-row"><div><h3>Realism</h3><p>Portraits and photo-realistic pieces by senior artists.</p></div><span class="price">from 200 лв.</span></div>
 </section>
 
 <section id="book">
-  <div class="section-title"><h2>Book a Session</h2><p>Consultations are always free</p></div>
+  <div class="section-title"><h2>Book a <span>Session</span></h2></div>
   <div class="contact-wrap">
     <div class="info-list">
       <div><h4>📍 Studio</h4><p>ul. Dragoman 14, Varna 9000</p></div>
       <div><h4>📞 Phone</h4><p>+359 89 444 7821</p></div>
       <div><h4>📸 Instagram</h4><p>@inktide.varna</p></div>
       <div><h4>🕕 Hours</h4><p>Tue–Sun · 11:00 – 20:00</p></div>
-      <div><h4>🔞 Note</h4><p>18+ only, ID required</p></div>
+      <div><h4>ℹ️ Consultations</h4><p>Always free — bring references</p></div>
     </div>
     <form id="contactForm" action="https://formspree.io/f/mzebnara" method="POST">
       <input type="hidden" name="site" value="Ink Tide Tattoo — Booking Request">
@@ -101,14 +98,20 @@
       <label for="email">Email</label>
       <input id="email" name="email" type="email" required placeholder="you@example.com">
       <label for="message">Your idea</label>
-      <textarea id="message" name="message" required placeholder="Fine line wave on forearm, ~8 cm, reference attached..."></textarea>
+      <textarea id="message" name="message" required placeholder="Fine line wave on forearm, ~8 cm..."></textarea>
       <button type="submit" class="btn">Send Request</button>
-      <p class="form-msg" id="formMsg">✅ Got it! We'll reply with available slots within 24h.</p>
+      <p class="form-msg" id="formMsg"></p>
     </form>
   </div>
 </section>
 
 <footer>© 2026 Ink Tide Tattoo · Varna</footer>
+
+<nav>
+  <a href="#styles">Styles</a>
+  <a href="#book">Book</a>
+  <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+</nav>
 
 <script>
   document.getElementById('contactForm').addEventListener('submit', async function(e) {
@@ -116,7 +119,7 @@
     const form = this, msg = document.getElementById('formMsg');
     try {
       const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-      msg.textContent = res.ok ? "✅ Got it! We'll reply with available slots within 24h." : "⚠️ Something went wrong — DM us on Instagram instead.";
+      msg.textContent = res.ok ? "✅ Got it! We'll reply with available slots within 24h." : "⚠️ Something went wrong — DM us on Instagram.";
       if (res.ok) form.reset();
     } catch { msg.textContent = "⚠️ Network error — please try again."; }
     msg.style.display = 'block';
